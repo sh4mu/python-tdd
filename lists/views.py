@@ -12,6 +12,7 @@ def home_page(request):
     else:
         new_item_text=''
     
+    items = Item.objects.all()
     return render(request, 'home.html', {
-        'new_item_text': new_item_text
+        'items': items
     })

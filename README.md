@@ -9,7 +9,8 @@ Download *https://github.com/mozilla/geckodriver/releases* and place it under /u
 `$ django-admin startproject superlists .`
 `$ python manage.py runserver`
 
-## Using the Django project
+# Developing web applications
+## Setting up the Django project
 *Create an app*
 `$ python manage.py startapp lists`
 
@@ -27,5 +28,13 @@ The unit-test/code cycle
 * Make a minimal code change in the editor.
 * Repeat!
 
+## Setting up the Django object database
 Migrate current model to the "database"
 `$ python manage.py makemigrations`
+
+Create the actual configured DATABASE
+`$ python manage.py migrate`
+
+Recreate the Database
+`$ rm db.sqlite3`
+`$ python manage.py migrate --noinput`
