@@ -27,3 +27,5 @@ The unit-test/code cycle
 * Make a minimal code change in the editor.
 * Repeat!
 
+Migrate current model to the "database"
+`$ python manage.py makemigrations`
