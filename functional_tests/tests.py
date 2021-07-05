@@ -68,18 +68,8 @@ class NewVisitorTest(LiveServerTestCase):
         # Edith wonders whether the site will remember her list. Then she sees
         # that the site has generated a unique URL for her -- there is some
         # explanatory text to that effect.
-        self.fail('Finish the test!')
 
         # She visits that URL - her to-do list is still there.
-
-        # Satisfied, she goes back to sleep
-
-    def test_can_start_a_list_for_one_user(self):
-        # Edith has heard about a cool new online to-do app. She goes
-        
-        # The page updates again, and now shows both items on her list
-        self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
-        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # Satisfied, she goes back to sleep
 
@@ -106,7 +96,6 @@ class NewVisitorTest(LiveServerTestCase):
         # list
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
-        self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
 
         # Francis starts a new list by entering a new item. He
