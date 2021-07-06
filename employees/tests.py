@@ -1,6 +1,10 @@
 from django.test import TestCase
 from django.urls import resolve
+from rest_framework.test import APIClient
+import datetime, decimal
+
 from employees.models import Employee
+from employees.serializers import EmployeeSerializer
 
 class CreateAndListEmployees(TestCase):
     # check that deafault employees route lists all employees djangorestframework function
@@ -19,8 +23,23 @@ class CreateAndListEmployees(TestCase):
         #resp = self.client.get('/employees/', format='json')
         resp = self.client.get('/employees/', headers={'content-type': 'application/json'})
         self.assertEqual(len(resp.json()), 2)
-        
 
+    def test_root_url_post_new_employee(self):
+        new_employee = Employee.objects.create(
+            name='Alfredo Azevedo', 
+            email='alfredo@hotmail.com', 
+            hired=datetime.date(2019, 10, 12), 
+            salary=decimal.Decimal(2000)
+        )
+
+        serializer = EmployeeSerializer(new_employee)
+        
+        client = APIClient()
+        resp = client.post('/employees/', serializer.data, format='json')
+        self.assertEqual(resp.status_code, 201)  # verify valid response code
+        
+        resp_employee = Employee.objects.first()
+        self.assertEqual(resp_employee.name, 'Alfredo Azevedo')
 
 
 
