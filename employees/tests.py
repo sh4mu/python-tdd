@@ -6,7 +6,7 @@ class CreateAndListEmployees(TestCase):
     # check that deafault employees route lists all employees djangorestframework function
     def test_root_url_resolves_to_list_all_employees(self):
         found = resolve('/employees/')
-        self.assertEqual(found.view_name, 'employees.views.employee_list')
+        self.assertEqual(found.view_name, 'employee-list')
 
     def test_root_url_lists_all_employees_response_code(self):
         resp = self.client.get('/employees/', headers={'content-type': 'application/json'})        

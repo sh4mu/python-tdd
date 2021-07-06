@@ -8,6 +8,6 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['name', 'salary', 'email', 'hired']
 
 # ViewSets define the view behavior.
-# class EmployeeViewSet(viewsets.ModelViewSet):
-#     queryset = Employee.objects.all()
-#     serializer_class = EmployeeSerializer
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer

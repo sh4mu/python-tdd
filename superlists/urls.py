@@ -18,16 +18,15 @@ from django.urls import path, include
 
 from lists import views as list_views
 from lists import urls as list_urls
-from employees import urls as employee_urls
 
-#from rest_framework import routers
-#from employees.serializers import EmployeeViewSet
+from rest_framework import routers
+from employees.serializers import EmployeeViewSet
 
-#router = routers.DefaultRouter()
-#router.register(r'employees', EmployeeViewSet)
+router = routers.DefaultRouter()
+router.register(r'employees', EmployeeViewSet)
 
 urlpatterns = [
     path('', list_views.home_page, name='home'),
-    path('', include(employee_urls)),
+    path('', include(router.urls)),
     path('lists/', include(list_urls)),
 ]
